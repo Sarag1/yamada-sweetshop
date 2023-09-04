@@ -1,15 +1,55 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Product from '../components/Product.tsx';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Home">
+	<section class="NewMerch">
+		<h2>NewMerch</h2>
+        <p>Descubre nuestros ultimos sabores!</p>
+		<div class="NewMerch-items">
+			<Product Name="product 1" Description="lorem iptsu" Image="https://i.pinimg.com/564x/dd/45/85/dd45857c0c5e3120e22da66164dfcf58.jpg" Price="200" State='New' client:load />
+
+			<Product Name="product 2" Description="lorem iptsu" Image="https://i.pinimg.com/564x/28/56/4b/28564b83891cfcaf2f1b9bfa6de844e9.jpg" Price="50" State='New' client:load />
+	
+			<Product Name="product 3" Description="lorem iptsu" Image="https://i.pinimg.com/736x/8d/a1/35/8da13518a6ed55f235c891bbbf6eda3d.jpg" Price="100" State='Reroll' client:load />
+
+			<Product Name="product 4" Description="lorem iptsu" Image="https://i.pinimg.com/736x/75/f9/d4/75f9d455bef8b51a2dfef447013dd016.jpg" Price="100" State='Reroll' client:load />
+
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.NewMerch {
+    width: 90%;
+    margin: 0 auto;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.NewMerch-items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    justify-items: center;
+    gap: 1rem;
+    overflow: hidden;
+    margin-top: 2rem;
+    transition: all 0.3s ease-in-out;
+}
+
+
+@media screen and (max-width: 768px) {
+    .NewMerch {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .NewMerch-items {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+}
+</style>

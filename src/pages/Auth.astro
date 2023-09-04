@@ -1,0 +1,456 @@
+---
+
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth</title>
+</head>
+<body>
+    <main>
+        <div class="Toast">
+            <div>
+                <img id="toast-image" src="https://i.pinimg.com/564x/53/d0/85/53d085889fe1db456acb0dd796431cd5.jpg" alt="login-icon">
+            </div>
+            <div class="toast-content">
+                <h2 id="toast-title">Success</h2>
+                <p id="toast-message">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+            </div>
+        </div>
+        <section class="auth">
+            <div class="image login-img"></div>
+            <article class="auth-forms">
+                <button class="back" onclick="window.history.back()">Back</button>
+                <div class="login">
+                    <div class="form-header">
+                        <img src="https://i.pinimg.com/564x/53/d0/85/53d085889fe1db456acb0dd796431cd5.jpg" alt="login-icon">
+                        <h2>Login</h2>
+                    </div>
+                    <form action="" method="post">
+                        <fieldset>
+                            <label for="username-login">Username</label>
+                            <input type="text" name="username-login" id="username-login" placeholder="Jhon">
+                        </fieldset>
+                        <fieldset>
+                            <label for="password-login">Password</label>
+                            <input type="password" name="password-login" id="password-login" placeholder="123456">
+                        </fieldset>
+                        <fieldset>
+                            <button id="loginBtn" type="button">Login</button>
+                        </fieldset>
+                    </form>
+
+                    <p>Don't have an account? <span 
+                        onclick="
+                        document.querySelector('.register').style.display = 'flex';
+                        document.querySelector('.login').style.display = 'none';
+                        document.querySelector('.image').classList.remove('login-img');
+                        document.querySelector('.image').classList.add('register-img')
+                        ">Register</span></p>
+                </div>
+                <div class="register">
+                    <div class="form-header">
+                        <img src="https://i.pinimg.com/736x/e6/73/2c/e6732c27035069976160ce9432064001.jpg" alt="registe-icon">
+                        <h2>Register</h2>
+                    </div>
+                    <form action="" method="post">
+                        <fieldset>
+                            <label for="username-register">Username</label>
+                            <input type="text" name="username-register" id="username-register" placeholder="Jhon">
+                        </fieldset>
+                        <fieldset>
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" placeholder="jhon@cualquiercosa.com">
+                        </fieldset>
+                        <fieldset class="multi-field">
+                            <fieldset>
+                                <label for="register-password">Password</label>
+                                <input type="password" name="register-password" id="register-password" placeholder="123456">
+                            </fieldset>
+                            <fieldset>
+                                <label for="register-password-confirm">Confirm Password</label>
+                                <input type="password" name="register-password-confirm" id="register-password-confirm" placeholder="123456">
+                            </fieldset>
+                        </fieldset>
+                        <fieldset>
+                            <button id="registerBtn" type="button">Register</button>
+                        </fieldset>
+                    </form>
+
+                    <p>Already have an account? <span
+                    onclick="
+                    document.querySelector('.register').style.display = 'none';
+                    document.querySelector('.login').style.display = 'flex';
+                    document.querySelector('.image').classList.remove('register-img');
+                    document.querySelector('.image').classList.add('login-img');
+                    "
+                    >Login</span></p>
+                </div>
+            </section>
+        </section>
+    </main>
+</body>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    main{
+        width: 100vw;
+        max-width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .auth {
+        width: 70%;
+        height: 80%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+    }
+
+    .image {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+
+        border-radius: 1rem 0 0 1rem;
+        transition: all 0.3s ease-in-out;
+        filter: blur(0px);
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+    }
+
+    .image.login-img {
+        background-image: url('https://i.pinimg.com/564x/de/3d/82/de3d82aefe7d825a5dd34f5021e8a862.jpg');
+    }
+
+    .image.register-img {
+        background-image: url('https://i.pinimg.com/750x/c3/7b/a7/c37ba7e3d78d23b75b192c42d3f8c946.jpg');
+    }
+
+    .image:hover{
+        filter: blur(2px);
+        box-shadow: 0 0 0rem rgba(0, 0, 0, 0.5);
+        transform: scale(1.03);
+    }
+
+    .active-form {
+        display: flex;
+    }
+
+    .register, .login{
+        display:flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+
+        width: 100%;
+        height: 100%;
+        padding: 3rem;
+        border-radius: 0 1rem 1rem 0;
+        background: #242424;
+        color: #fff;
+        transition: all 0.3s ease-in-out;
+    }
+
+
+    .form-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .form-header img {
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .form-header h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+    .auth-forms {
+        position: relative;
+        transition: all 0.3s ease-in-out;
+    }
+
+    
+    .auth-forms:hover{
+        transform: scale(1.03);
+    }
+
+    .auth-forms form {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .auth-forms fieldset {
+        display: flex;
+        flex-direction: column;
+        border: none;
+    }
+
+    .auth-forms fieldset label {
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .auth-forms fieldset input {
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        border: 1px solid transparent;
+        outline: none;
+        box-shadow: 0 0 0 1px #fff;
+
+        transition: all 0.3s ease-in-out;
+    }
+
+    .auth-forms fieldset input:focus {
+        box-shadow: 0 0 0 2px #fff;
+        border: 1px solid #141414;
+    }
+
+    .auth-forms fieldset.multi-field {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+
+    .auth-forms fieldset.multi-field fieldset {
+        width: 50%;
+    }
+
+    .auth-forms button {
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        border: 1px solid transparent;
+        outline: none;
+        box-shadow: 0 0 0 1px #fff;
+        background: transparent;
+        color: #fff;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .auth-forms button:hover {
+        box-shadow: 0 0 0 2px #fff;
+        border: 1px solid #141414;
+    }
+
+    .auth-forms span {
+        color: #6bafc3;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .auth-forms span:hover {
+        color:  #bbbbbb;
+    }
+
+    .register{
+        display: none;
+    }
+
+    button.back {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        border: 1px solid transparent;
+        outline: none;
+        box-shadow: 0 0 0 1px #fff;
+        background: transparent;
+        color: #fff;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .Toast {
+        width: 30%;
+        position: fixed;
+        bottom: 1rem;
+        right: 1rem;
+        display: flex;
+        gap: 1rem;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        background: #242424;
+        box-shadow: 0 0 0 1px #141414;
+        color: #fff;
+        transition: all 0.3s ease-in-out;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 100;
+    }
+
+    .Toast.active {
+        opacity: 1;
+        visibility: visible;
+        animation: toast 0.3s ease-in-out;
+    }
+
+    .Toast img {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .Toast .toast-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .Toast .toast-content h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+    .Toast .toast-content p {
+        font-size: 1rem;
+        font-weight: 400;
+    }
+
+    @keyframes toast {
+        0% {
+            transform: translateX(100%);
+        }
+
+        100% {
+            transform: translateX(0%);
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .auth {
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr;
+        }
+
+        .image {
+            border-radius: 1rem 1rem 0 0;
+        }
+
+        .auth-forms {
+            border-radius: 0 0 1rem 1rem;
+        }
+    }
+
+    @media screen and (max-width: 576px) {
+        .auth {
+            width: 90%;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .auth {
+            width: 100%;
+        }
+    }
+
+</style>
+<script>
+    window.onload = () => {
+        if(sessionStorage.getItem('isLogedIn') === 'true') {
+            window.location.href = '/';
+        }
+    }
+
+    const toast = document.querySelector('.Toast');
+    function showToast(title, message, image) {
+        document.querySelector('#toast-title').innerText = title;
+        document.querySelector('#toast-message').innerText = message;
+        document.querySelector('#toast-image').src = image;
+        toast.classList.add('active');
+        setTimeout(() => {
+            toast.classList.remove('active');
+        }, 3000);
+    }
+
+    const registerBtn = document.querySelector('#registerBtn');
+    const loginBtn = document.querySelector('#loginBtn');
+
+    function register(e) {
+        e.preventDefault();
+        const username = document.querySelector('#username-register').value;
+        const email = document.querySelector('#email').value;
+        const password = document.querySelector('#register-password').value;
+        const passwordConfirm = document.querySelector('#register-password-confirm').value;
+
+        if(username === '' || email === '' || password === '' || passwordConfirm === '') {
+            showToast('Error', 'Please fill all the fields', 'https://i.pinimg.com/736x/58/96/6c/58966cbc589a18711239187fc5065848.jpg');
+        } 
+        
+        if(password !== passwordConfirm) {
+            showToast('Error', 'Passwords do not match', 'https://i.pinimg.com/736x/58/96/6c/58966cbc589a18711239187fc5065848.jpg');
+        }
+
+        let usuario = {
+            username,
+            email,
+            password
+        }
+
+        sessionStorage.setItem('user', JSON.stringify(usuario));
+
+        showToast('Success', 'You have been registered', 'https://i.pinimg.com/736x/53/1b/20/531b2091e787d1ca6d0647792d007623.jpg');
+
+        document.querySelector('.register').style.display = 'none';
+        document.querySelector('.login').style.display = 'flex';
+        document.querySelector('.image').classList.remove('register-img');
+        document.querySelector('.image').classList.add('login-img');
+    }
+
+    function login (e){
+        e.preventDefault();
+        const username = document.querySelector('#username-login').value;
+        const password = document.querySelector('#password-login').value;
+
+        if(username === '' || password === '') {
+            showToast('Error', 'Please fill all the fields', 'https://i.pinimg.com/736x/58/96/6c/58966cbc589a18711239187fc5065848.jpg');
+        } 
+
+        let usuario = {
+            username,
+            password
+        }
+
+        let user = JSON.parse(sessionStorage.getItem('user'));
+
+        if(user.username === usuario.username && user.password === usuario.password) {
+            showToast('Success', 'You have been logged in', 'https://i.pinimg.com/736x/53/1b/20/531b2091e787d1ca6d0647792d007623.jpg');
+        } else {
+            showToast('Error', 'Username or password incorrect', 'https://i.pinimg.com/736x/58/96/6c/58966cbc589a18711239187fc5065848.jpg');
+        }
+
+        window.location.href = '/';
+        sessionStorage.setItem('isLogedIn', "true");
+    }
+
+    registerBtn.addEventListener('click', register);
+    loginBtn.addEventListener('click', login);
+</script>
+</html>

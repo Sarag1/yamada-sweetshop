@@ -1,0 +1,349 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+header {
+    background-color: #141414;
+    border-bottom: 1px solid #eee;
+    height: 60px;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    padding: .5rem 2rem;
+    justify-content: space-between;
+}
+
+.nav-start, .nav-end {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo img {
+    height: 70px;
+    width: 70px;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.menu-bar {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+
+.menu-bar li a {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    position: relative;
+    transition: all .3s ease;
+}
+
+.menu-bar li a::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #727272;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: all .3s ease;
+}
+
+.menu-bar li a:hover {
+    color: #727272;
+}
+
+.menu-bar li a:hover::before {
+    transform: scaleX(1);
+}
+
+.left-menu {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cart {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    position: relative;
+}
+
+.cart i {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.cart span {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #f00;
+    color: #fff;
+    font-size: .8rem;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+}
+
+.cart-dropdown, .user-menu-dropdown {
+    display: none;
+    position: absolute;
+    top: 120%;
+    right: 0;
+    width: 300px;
+    height: auto;
+    max-height: 400px;
+    background-color: #141414;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    padding: 1rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    z-index: 5;
+}
+
+.cart-dropdown .dropdown-title, .user-menu-dropdown .dropdown-title {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.user-menu .dropdown-title span {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.cart-dropdown .auth-options, .user-menu-dropdown .auth-options {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cart-dropdown li, .user-menu-dropdown li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cart-dropdown li a, .user-menu-dropdown li a {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+hr {
+    width: 100%;
+    border: 1px solid #eee;
+}
+
+.user-menu {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    position: relative;
+}
+
+.user-menu i {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.user-menu img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.hamburger {
+    display: none;
+    font-size: 1.5rem;
+    color: #fff;
+    padding: .5rem;
+}
+
+.cart-items {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    overflow: auto;
+}
+
+.cart-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cart-item-img {
+    height: 50px;
+    width: 50px;
+}
+
+.cart-item-img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+@media screen and (max-width: 768px) {
+    header {
+        padding: .5rem 1rem;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .menu-bar {
+        display: none;
+    }
+
+    .cart-dropdown, .user-menu-dropdown {
+        width: 200px;
+        top: 100%;
+        right:0;
+        padding: 2rem;
+    }
+
+    .cart-dropdown .auth-options, .user-menu-dropdown .auth-options {
+        flex-direction: column;
+    }
+
+    .cart-dropdown li, .user-menu-dropdown li {
+        flex-direction: column;
+    }
+
+    .cart-dropdown li a, .user-menu-dropdown li a {
+        font-size: .8rem;
+    }
+
+    .cart-dropdown .dropdown-title, .user-menu-dropdown .dropdown-title {
+        font-size: .8rem;
+    }
+
+    .cart-dropdown .auth-options, .user-menu-dropdown .auth-options {
+        gap: .5rem;
+    }
+
+    .cart-dropdown li, .user-menu-dropdown li {
+        gap: .5rem;
+    }
+
+    .cart-dropdown li a, .user-menu-dropdown li a {
+        font-size: .8rem;
+    }
+
+    .cart-dropdown .dropdown-title, .user-menu-dropdown .dropdown-title {
+        font-size: .8rem;
+    }
+
+    .cart-dropdown .auth-options, .user-menu-dropdown .auth-options {
+        gap: .5rem;
+    }
+
+    .cart-dropdown li, .user-menu-dropdown li {
+        gap: .5rem;
+    }
+
+    .cart-dropdown li a, .user-menu-dropdown li a {
+        font-size: .8rem;
+    }
+
+    .cart-dropdown .dropdown-title, .user-menu-dropdown .dropdown-title {
+        font-size: .8rem;
+    }
+
+    .cart-dropdown .auth-options, .user-menu-dropdown .auth-options {
+        gap: .5rem;
+    }
+
+    .cart-dropdown li, .user-menu-dropdown li {
+        gap: .5rem;
+    }
+
+    .cart-dropdown li a, .user-menu-dropdown li a {
+        font-size: .8rem;
+    }
+
+    .cart-dropdown .dropdown-title, .user-menu-dropdown .dropdown-title {
+        font-size: .8rem;
+    }
+
+    .cart-dropdown .auth-options, .user-menu-dropdown .auth-options {
+        gap: .5rem;
+    }
+
+    .cart-dropdown li, .user-menu-dropdown li {
+        gap: .5rem
+    }
+
+}
+
+
+.active {
+    display: flex;
+}
+
+
+.menu-bar.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #141414;
+    padding: 1rem;
+    z-index: 5;
+}

@@ -1,0 +1,74 @@
+---
+import Header from '../components/Header.tsx'
+const {title} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>{title} | yamada</title>
+</head>
+<body>
+    <Header client:load />
+    <main>
+        <slot />
+    </main>
+
+    <footer>
+        <p>© 2020 yamada</p>
+    </footer>
+</body>
+
+    <style is:global>
+        :root {
+		background-color: #202020;
+		color: #fff;
+		--principal-color: #5865F2;
+		--secondary-color: #7289DA;
+	    }
+
+
+        *, ::after, ::before {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        header {
+            top: 0;
+            z-index: 100;
+            width: 100%;
+            height: auto;
+        }
+
+    </style>
+
+<script>
+	window.addEventListener('load', () => {
+        interface CartItem {
+            id: number;
+            name: string;
+            price: number;
+            quantity: number;
+        }
+
+		if(!sessionStorage.getItem('isLogedIn')) {
+			sessionStorage.setItem('isLogedIn', "false");
+		}
+
+        if(sessionStorage.getItem('cart') == null) {
+            let cart: CartItem[] = [];
+            sessionStorage.setItem('cart', JSON.stringify(cart));
+        }
+	});
+</script>
+</html>
